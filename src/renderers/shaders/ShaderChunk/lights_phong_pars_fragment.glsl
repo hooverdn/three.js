@@ -62,8 +62,11 @@ void RE_Direct_BlinnPhong( const in IncidentLight directLight, const in Geometri
 	#endif
 
 	reflectedLight.directDiffuse += irradiance * BRDF_Diffuse_Lambert( material.diffuseColor );
+    #ifdef IRIDESCENT
+	reflectedLight.directSpecular += irradiance * BRDF_Specular_Iridescent( directLight, geometry, material.specularColor, material.specularShininess ) * material.specularStrength;
+    #else
 	reflectedLight.directSpecular += irradiance * BRDF_Specular_BlinnPhong( directLight, geometry, material.specularColor, material.specularShininess ) * material.specularStrength;
-
+    #endif
 }
 
 void RE_IndirectDiffuse_BlinnPhong( const in vec3 irradiance, const in GeometricContext geometry, const in BlinnPhongMaterial material, inout ReflectedLight reflectedLight ) {

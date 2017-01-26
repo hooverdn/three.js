@@ -243,6 +243,7 @@ var list = {
 			[ "MeshPhysicalMaterial", "api/materials/MeshPhysicalMaterial" ],
 			[ "MeshStandardMaterial", "api/materials/MeshStandardMaterial" ],
 			[ "MeshToonMaterial", "api/materials/MeshToonMaterial" ],
+			[ "MeshIridescentMaterial", "api/materials/MeshIridescentMaterial" ],
 			[ "MultiMaterial", "api/materials/MultiMaterial" ],
 			[ "PointsMaterial", "api/materials/PointsMaterial" ],
 			[ "RawShaderMaterial", "api/materials/RawShaderMaterial" ],

@@ -458,6 +458,27 @@ vec3 BRDF_Specular_BlinnPhong( const in IncidentLight incidentLight, const in Ge
 
 } // validated
 
+vec3 BRDF_Specular_Iridescent( const in IncidentLight incidentLight, const in GeometricContext geometry, const in vec3 specularColor, const in float shininess ) {
+
+	vec3 halfDir = normalize( incidentLight.direction + geometry.viewDir );
+
+	float dotNL = saturate( dot( geometry.normal, incidentLight.direction ) );
+	float dotNV = saturate( dot( geometry.normal, geometry.viewDir ) );
+	float dotLH = saturate( dot( incidentLight.direction, halfDir ) );
+	//float dotVN = saturate( dot( geometry.normal, geometry.viewDir ) );
+	//float dotNL = saturate( dot( geometry.normal, incidentLight.direction ) );
+
+	vec3 F = F_Schlick( specularColor, dotLH );
+
+	float G = G_BlinnPhong_Implicit( /* dotNL, dotNV */ );
+
+	float D = D_BlinnPhong( shininess, dotNL * dotNV);
+
+	return F * ( G * D );
+
+} // validated
+
+
 // source: http://simonstechblog.blogspot.ca/2011/12/microfacet-brdf.html
 float GGXRoughnessToBlinnExponent( const in float ggxRoughness ) {
 	return ( 2.0 / pow2( ggxRoughness + 0.0001 ) - 2.0 );

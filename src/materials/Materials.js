@@ -8,6 +8,7 @@ export { MeshPhysicalMaterial } from './MeshPhysicalMaterial.js';
 export { MeshStandardMaterial } from './MeshStandardMaterial.js';
 export { MeshPhongMaterial } from './MeshPhongMaterial.js';
 export { MeshToonMaterial } from './MeshToonMaterial.js';
+export { MeshIridescentMaterial } from './MeshIridescentMaterial.js';
 export { MeshNormalMaterial } from './MeshNormalMaterial.js';
 export { MeshLambertMaterial } from './MeshLambertMaterial.js';
 export { MeshDepthMaterial } from './MeshDepthMaterial.js';

@@ -609,6 +609,7 @@ function WebGLRenderer( parameters ) {
 			if ( ! material.isMeshPhongMaterial &&
 				! material.isMeshStandardMaterial &&
 				! material.isMeshNormalMaterial &&
+				! material.isMeshIridescentMaterial &&
 				material.shading === FlatShading ) {
 
 				for ( var i = 0, l = object.count * 3; i < l; i += 9 ) {
@@ -1792,6 +1793,7 @@ function WebGLRenderer( parameters ) {
 			if ( material.isShaderMaterial ||
 				material.isMeshPhongMaterial ||
 				material.isMeshStandardMaterial ||
+				material.isMeshIridescentMaterial ||
 				material.envMap ) {
 
 				var uCamPos = p_uniforms.map.cameraPosition;
@@ -1810,6 +1812,7 @@ function WebGLRenderer( parameters ) {
 				material.isMeshBasicMaterial ||
 				material.isMeshStandardMaterial ||
 				material.isShaderMaterial ||
+				material.isIridescentMaterial ||
 				material.skinning ) {
 
 				p_uniforms.setValue( _gl, 'viewMatrix', camera.matrixWorldInverse );
@@ -1880,6 +1883,7 @@ function WebGLRenderer( parameters ) {
 				material.isMeshPhongMaterial ||
 				material.isMeshStandardMaterial ||
 				material.isMeshNormalMaterial ||
+				material.isMeshIridescentMaterial ||
 				material.isMeshDepthMaterial ) {
 
 				refreshUniformsCommon( m_uniforms, material );
