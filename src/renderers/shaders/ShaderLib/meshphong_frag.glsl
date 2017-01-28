@@ -56,6 +56,12 @@ void main() {
 
 	vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
 
+    // Assume light coords are always >= 0.0 and normalize them in a
+    // way that doesn't change the hue.
+    float mx = max(outgoingLight.x, max(outgoingLight.y, outgoingLight.z));
+    if (mx > 1.0) {
+      outgoingLight /= mx;
+    }
 	#include <envmap_fragment>
 
 	gl_FragColor = vec4( outgoingLight, diffuseColor.a );
