@@ -13,7 +13,10 @@ struct BlinnPhongMaterial {
 	vec3	specularColor;
 	float	specularShininess;
 	float	specularStrength;
-
+#ifdef IRIDESCENT
+	vec3	iridescence;
+	float	iridescentness;
+#endif
 };
 
 #if NUM_RECT_AREA_LIGHTS > 0
@@ -62,10 +65,10 @@ void RE_Direct_BlinnPhong( const in IncidentLight directLight, const in Geometri
 	#endif
 
 	reflectedLight.directDiffuse += irradiance * BRDF_Diffuse_Lambert( material.diffuseColor );
-    #ifdef IRIDESCENT
-	reflectedLight.directSpecular += irradiance * BRDF_Specular_Iridescent( directLight, geometry, material.specularColor, material.specularShininess ) * material.specularStrength;
-    #else
 	reflectedLight.directSpecular += irradiance * BRDF_Specular_BlinnPhong( directLight, geometry, material.specularColor, material.specularShininess ) * material.specularStrength;
+
+    #ifdef IRIDESCENT
+		reflectedLight.directSpecular += irradiance * BRDF_Iridescent_BlinnPhong( directLight, geometry, material.iridescence, material.iridescentness );
     #endif
 }
 

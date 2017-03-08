@@ -23,6 +23,7 @@ import { Color } from '../math/Color';
  *  emissiveMap: new THREE.Texture( <Image> ),
  *
  *  specularMap: new THREE.Texture( <Image> ),
+ *  iridescenceMap: new THREE.Texture( <Image> ),
  *
  *  alphaMap: new THREE.Texture( <Image> ),
  *
@@ -61,6 +62,7 @@ function MeshLambertMaterial( parameters ) {
 	this.emissiveMap = null;
 
 	this.specularMap = null;
+	this.iridescenceMap = null;
 
 	this.alphaMap = null;
 
@@ -106,6 +108,7 @@ MeshLambertMaterial.prototype.copy = function ( source ) {
 	this.emissiveIntensity = source.emissiveIntensity;
 
 	this.specularMap = source.specularMap;
+	this.iridescenceMap = source.iridescenceMap;
 
 	this.alphaMap = source.alphaMap;
 

@@ -1812,7 +1812,7 @@ function WebGLRenderer( parameters ) {
 				material.isMeshBasicMaterial ||
 				material.isMeshStandardMaterial ||
 				material.isShaderMaterial ||
-				material.isIridescentMaterial ||
+				material.isMeshIridescentMaterial ||
 				material.skinning ) {
 
 				p_uniforms.setValue( _gl, 'viewMatrix', camera.matrixWorldInverse );
@@ -1913,6 +1913,10 @@ function WebGLRenderer( parameters ) {
 
 				refreshUniformsToon( m_uniforms, material );
 
+			} else if ( material.isMeshIridescentMaterial ) {
+
+				refreshUniformsIridescent( m_uniforms, material );
+
 			} else if ( material.isMeshPhongMaterial ) {
 
 				refreshUniformsPhong( m_uniforms, material );
@@ -1998,10 +2002,11 @@ function WebGLRenderer( parameters ) {
 		// uv repeat and offset setting priorities
 		// 1. color map
 		// 2. specular map
-		// 3. normal map
-		// 4. bump map
-		// 5. alpha map
-		// 6. emissive map
+		// 3. iridescence map
+		// 4. normal map
+		// 5. bump map
+		// 7. alpha map
+		// 8. emissive map
 
 		var uvScaleMap;
 
@@ -2012,6 +2017,10 @@ function WebGLRenderer( parameters ) {
 		} else if ( material.specularMap ) {
 
 			uvScaleMap = material.specularMap;
+
+		} else if ( material.iridescenceMap ) {
+
+			uvScaleMap = material.iridescenceMap;
 
 		} else if ( material.displacementMap ) {
 
@@ -2168,6 +2177,24 @@ function WebGLRenderer( parameters ) {
 		}
 
 	}
+
+    function refreshUniformsIridescent( uniforms, material ) {
+        refreshUniformsPhong( uniforms, material );
+
+        if ( material.iridescence ) {
+
+            uniforms.iridescence.value = material.iridescence;
+            // prevent pow( 0.0, 0.0 )
+		    uniforms.iridescentness.value = Math.max( material.iridescentness, 1e-4 );
+
+        }
+
+        if ( material.iridescenceMap ) {
+
+            uniforms.iridescenceMap.value = material.iridescenceMap;
+
+        }
+    }
 
 	function refreshUniformsToon( uniforms, material ) {
 

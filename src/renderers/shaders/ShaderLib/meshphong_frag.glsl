@@ -4,6 +4,8 @@ uniform vec3 diffuse;
 uniform vec3 emissive;
 uniform vec3 specular;
 uniform float shininess;
+uniform vec3 iridescence;
+uniform float iridescentness;
 uniform float opacity;
 
 #include <common>
@@ -26,6 +28,7 @@ uniform float opacity;
 #include <bumpmap_pars_fragment>
 #include <normalmap_pars_fragment>
 #include <specularmap_pars_fragment>
+#include <iridescencemap_pars_fragment>
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
 
@@ -43,6 +46,7 @@ void main() {
 	#include <alphamap_fragment>
 	#include <alphatest_fragment>
 	#include <specularmap_fragment>
+	#include <iridescencemap_fragment>
 	#include <normal_flip>
 	#include <normal_fragment>
 	#include <emissivemap_fragment>

@@ -18,6 +18,7 @@ uniform float opacity;
 #include <envmap_pars_fragment>
 #include <fog_pars_fragment>
 #include <specularmap_pars_fragment>
+#include <iridescencemap_pars_fragment>
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
 
@@ -33,6 +34,7 @@ void main() {
 	#include <alphamap_fragment>
 	#include <alphatest_fragment>
 	#include <specularmap_fragment>
+	#include <iridescencemap_fragment>
 
 	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
 

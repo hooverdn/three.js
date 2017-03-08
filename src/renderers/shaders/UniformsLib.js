@@ -18,6 +18,7 @@ var UniformsLib = {
 		offsetRepeat: { value: new Vector4( 0, 0, 1, 1 ) },
 
 		specularMap: { value: null },
+		iridescenceMap: { value: null },
 		alphaMap: { value: null },
 
 		envMap: { value: null },

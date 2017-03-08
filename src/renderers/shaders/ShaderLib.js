@@ -61,7 +61,9 @@ var ShaderLib = {
 			{
 				emissive: { value: new Color( 0x000000 ) },
 				specular: { value: new Color( 0x111111 ) },
-				shininess: { value: 30 }
+				shininess: { value: 30 },
+				iridescence: { value: new Color( 0x000000 ) },
+                iridescentness: { value: 1e-4 } // prevent pow( 0.0, 0.0 )
 			}
 		] ),
 

@@ -458,12 +458,13 @@ vec3 BRDF_Specular_BlinnPhong( const in IncidentLight incidentLight, const in Ge
 
 } // validated
 
-vec3 BRDF_Specular_Iridescent( const in IncidentLight incidentLight, const in GeometricContext geometry, const in vec3 specularColor, const in float shininess ) {
+vec3 BRDF_Iridescent_BlinnPhong( const in IncidentLight incidentLight, const in GeometricContext geometry, const in vec3 specularColor, const in float shininess ) {
 
 	vec3 halfDir = normalize( incidentLight.direction + geometry.viewDir );
 
 	float dotNL = saturate( dot( geometry.normal, incidentLight.direction ) );
 	float dotNV = saturate( dot( geometry.normal, geometry.viewDir ) );
+	float dotLV = saturate( dot( incidentLight.direction, geometry.viewDir ) );
 	float dotLH = saturate( dot( incidentLight.direction, halfDir ) );
 	//float dotVN = saturate( dot( geometry.normal, geometry.viewDir ) );
 	//float dotNL = saturate( dot( geometry.normal, incidentLight.direction ) );
@@ -472,7 +473,7 @@ vec3 BRDF_Specular_Iridescent( const in IncidentLight incidentLight, const in Ge
 
 	float G = G_BlinnPhong_Implicit( /* dotNL, dotNV */ );
 
-	float D = D_BlinnPhong( shininess, dotNL * dotNV);
+	float D = D_BlinnPhong( shininess, sqrt(dotNL * dotNV));
 
 	return F * ( G * D );
 

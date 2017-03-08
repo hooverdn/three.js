@@ -74,7 +74,7 @@ function TorusKnotBufferGeometry( radius, tube, tubularSegments, radialSegments,
 
 	var vertex = new Vector3();
 	var normal = new Vector3();
-	var uv = new Vector2();
+	//var uv = new Vector2();
 
 	var P1 = new Vector3();
 	var P2 = new Vector3();

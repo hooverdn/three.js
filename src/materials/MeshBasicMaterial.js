@@ -18,6 +18,7 @@ import { Color } from '../math/Color';
  *  aoMapIntensity: <float>
  *
  *  specularMap: new THREE.Texture( <Image> ),
+ *  iridescenceMap: new THREE.Texture( <Image> ),
  *
  *  alphaMap: new THREE.Texture( <Image> ),
  *
@@ -55,6 +56,7 @@ function MeshBasicMaterial( parameters ) {
 	this.aoMapIntensity = 1.0;
 
 	this.specularMap = null;
+	this.iridescenceMap = null;
 
 	this.alphaMap = null;
 
@@ -97,6 +99,7 @@ MeshBasicMaterial.prototype.copy = function ( source ) {
 	this.aoMapIntensity = source.aoMapIntensity;
 
 	this.specularMap = source.specularMap;
+	this.iridescenceMap = source.iridescenceMap;
 
 	this.alphaMap = source.alphaMap;
 

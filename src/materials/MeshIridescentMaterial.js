@@ -4,7 +4,9 @@ import { MeshPhongMaterial } from './MeshPhongMaterial';
  * @author hooverdn / http://github.com/hooverdn
  *
  * parameters = {
- *  gradientMap: new THREE.Texture( <Image> )
+ *  iridescence: <hex>,
+ *  iridescentness: <float>,
+ *  iridescenceMap: new THREE.Texture( <Image> )
  * }
  */
 
@@ -16,8 +18,15 @@ function MeshIridescentMaterial( parameters ) {
 
 	this.type = 'MeshIridescentMaterial';
 
+    // no specular reflection by default
+    this.specular = new THREE.Color(0x000000);
+    this.shininess = 0;
+    
+	this.iridescence = new THREE.Color(0x000000);
+    this.iridescentness = 0;
+    
+    this.iridescenceMap = null;
 	this.setValues( parameters );
-
 }
 
 MeshIridescentMaterial.prototype = Object.create( MeshPhongMaterial.prototype );
@@ -29,8 +38,9 @@ MeshIridescentMaterial.prototype.copy = function ( source ) {
 
 	MeshPhongMaterial.prototype.copy.call( this, source );
 
-	this.gradientMap = source.gradientMap;
-
+    this.iridescence.copy(source.iridescence);
+    this.iridescentness.copy(source.iridescentness);
+    
 	return this;
 
 };

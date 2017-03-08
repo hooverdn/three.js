@@ -27,6 +27,7 @@ varying vec3 vLightFront;
 #include <shadowmap_pars_fragment>
 #include <shadowmask_pars_fragment>
 #include <specularmap_pars_fragment>
+#include <iridescencemap_pars_fragment>
 #include <logdepthbuf_pars_fragment>
 #include <clipping_planes_pars_fragment>
 
@@ -44,6 +45,7 @@ void main() {
 	#include <alphamap_fragment>
 	#include <alphatest_fragment>
 	#include <specularmap_fragment>
+	#include <iridescencemap_fragment>
 	#include <emissivemap_fragment>
 
 	// accumulation

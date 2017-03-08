@@ -164,6 +164,8 @@ Material.prototype = {
 		if ( this.emissive && this.emissive.isColor ) data.emissive = this.emissive.getHex();
 		if ( this.specular && this.specular.isColor ) data.specular = this.specular.getHex();
 		if ( this.shininess !== undefined ) data.shininess = this.shininess;
+		if ( this.iridescence && this.iridescence.isColor ) data.iridescence = this.iridescence.getHex();
+		if ( this.iridescentness !== undefined ) data.iridescentness = this.iridescentness;
 		if ( this.clearCoat !== undefined ) data.clearCoat = this.clearCoat;
 		if ( this.clearCoatRoughness !== undefined ) data.clearCoatRoughness = this.clearCoatRoughness;
 
@@ -194,6 +196,7 @@ Material.prototype = {
 
 		if ( this.emissiveMap && this.emissiveMap.isTexture ) data.emissiveMap = this.emissiveMap.toJSON( meta ).uuid;
 		if ( this.specularMap && this.specularMap.isTexture ) data.specularMap = this.specularMap.toJSON( meta ).uuid;
+		if ( this.iridescenceMap && this.iridescenceMap.isTexture ) data.iridescenceMap = this.iridescenceMap.toJSON( meta ).uuid;
 
 		if ( this.envMap && this.envMap.isTexture ) {
 
